@@ -157,3 +157,8 @@ z
     margin-top:5vh;
     background-color:white
 }
+
+li,a,a:hover
+{
+    color: white;
+}
