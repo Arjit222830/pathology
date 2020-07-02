@@ -1,0 +1,27 @@
+<!DOCTTYPE html>
+<html>
+    include header.pug
+    
+    <body>
+
+        -var html_names=['From','Password','To','Body'];
+        -var names= ['from','password','to','body'];
+        -var types= ['text','password','text','textarea'];
+        -var j=0;
+
+        div(class="container text-center")
+            form(id="form_mail")
+                h2= "Mail"
+                for r in html_names
+                    label(for="data"+(j+1))= r
+                    -if(types[j]=='textarea')
+                        textarea(type=types[j-1] placeholder="Message" id="data"+(j+1) name=names[j++])
+                        br
+                    -else
+                        input( type=types[j] placeholder=r id="data"+(j+1) name=names[j++])       
+                        br
+                input(type="file" id="file" name="file")
+                button(class="btn" id="mail_bottom" style="background-color:blue;color: white;margin-bottom:1vh")= "Send Mail"
+            hr
+
+        <script src="../pathology.js"></script>
