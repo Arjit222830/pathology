@@ -3,23 +3,28 @@
     include header.pug
     
     <body>
-        <div class="container-fluid">
+        <div class="container-fluid" id="index">
         
             include top.pug
+            
+            div(class="container white-background" style="margin-bottom:5vh;")
+                <div style="float:left;">
+                    <img id="floating" src="/i1.jpg">
+                    <h6 class="text-center">Arjit Bhandari</h6>
+                </div>
+                
+                <p>
+                    strong We focus on providing patients quality diagnostic healthcare services in India. Through our network, we offer patients convenient locations for their diagnostic healthcare services and efficient service. With over 3,368 diagnostic and related healthcare tests and services offered, we believe we are capable of performing substantially all of the diagnostic healthcare tests and services currently prescribed by physicians in India.
+                </p>
 
-            div(class="text-center")
-                <img id="i01" src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/201804/medical-lab-technician-647.jpeg?B0B9VXySPT6Ry8j.HY.dSOj7kQ9UCj.E" />            
-            
-            div(class="container")
-                <z>
-                    Bhandari Pathology is a well developed pathology. As users discover your brand, they need to distinguish what sets you apart and makes you… you.
-                    This often requires finding the right balance between compelling content and a design carefully planned to look the part.
-                    Conveying your identity in a fun and approachable – but also reliable and informative – way is challenging.
-                    If you know who you are and your goal for your site, the About Us page should come naturally.
-                    However if you’re looking for some inspiration, you can always check out the following 25 awesome examples of About Us pages.
-                    These examples will help you build a personal and engaging website journey.
-                </z>
-            
+                <p>
+                    strong Our key competitive strengths are:
+                    li(id="about-li") Business model focused on the patient as a customer and an established consumer healthcare brand associated with quality services, in a market where patients generally choose their diagnostic healthcare service provider.
+                    li(id="about-li") Well-positioned to leverage upon one of the fastest-growing segments of the Indian healthcare industry.
+                    li(id="about-li") A network whose growth yields greater economies of scale, combined with a “hub and spoke” model that is scalable for further growth.
+                    li(id="about-li") Centralized information technology platform that fully integrates our network and is scalable.
+                    li(id="about-li") Attractive financial performance, financial profile and return on invested capital.
+                </p>
     </body>
 
     include footer.pug

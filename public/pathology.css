@@ -62,7 +62,7 @@ img
     outline: none;
 }
 
-p
+p,#about-li
 {
     font-size: 15px;
     font-family: 'Quicksand';
@@ -161,4 +161,17 @@ z
 li,a,a:hover
 {
     color: white;
+}
+
+#floating
+{
+    width: auto;
+    height: 35vh;
+    margin-right: 2vw;
+    margin-bottom: 0.1vw;
+}
+
+#about-li
+{
+    color: black;
 }
