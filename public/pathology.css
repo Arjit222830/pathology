@@ -68,6 +68,11 @@ p,#about-li
     font-family: 'Quicksand';
 }
 
+p
+{
+    text-align: justify;
+}
+
 h3
 {
     font-size: 30px;
@@ -161,6 +166,7 @@ z
 li,a,a:hover
 {
     color: white;
+    font-family: 'Quicksand';
 }
 
 #floating
@@ -174,4 +180,15 @@ li,a,a:hover
 #about-li
 {
     color: black;
+}
+
+.carousel-image
+{
+    width: 30vw;
+    height: 45vh;
+}
+
+.staring
+{
+    color: rgb(255, 238, 0)
 }
