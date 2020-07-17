@@ -28,19 +28,6 @@ hr
     height: 25vh;
 }
 
-@media(max-width:550px){
-    #plant,#doctors
-    {
-        width:300px;
-    }
-
-    #title
-    {
-        width: 95vw;
-        height: 15vh;
-    }
-}
-
 #back-1
 {
     background-color: rgba(200, 214, 211, 0.507);
@@ -112,6 +99,12 @@ h4,h5
 {
     background-color:  rgb(26, 143, 118);
     color: white;
+}
+
+#certificate
+{
+    width: 25vw;
+    height: 45vh
 }
 
 
@@ -203,4 +196,23 @@ li,a,a:hover
 .staring
 {
     color: rgb(255, 238, 0)
+}
+
+
+@media(max-width:550px){
+    #plant,#doctors
+    {
+        width:300px;
+    }
+
+    #title
+    {
+        width: 95vw;
+        height: 15vh;
+    }
+
+    #certificate
+    {
+        width: 80vw;
+    }
 }
