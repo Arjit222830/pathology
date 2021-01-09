@@ -16,6 +16,8 @@
     "compression": "^1.7.4",
     "config": "^3.3.1",
     "express": "^4.17.1",
+    "formidable": "^1.2.2",
+    "fs": "0.0.1-security",
     "helmet": "^3.22.0",
     "mongoose": "^5.9.10",
     "nodemailer": "^6.4.6",

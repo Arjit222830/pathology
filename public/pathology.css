@@ -175,7 +175,7 @@ z
 
 li,a,a:hover
 {
-    color: white;
+    color: white!important;
     font-family: 'Quicksand';
 }
 

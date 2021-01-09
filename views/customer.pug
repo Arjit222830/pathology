@@ -1,0 +1,23 @@
+<html>
+    include header.pug
+    
+    <body>
+
+        div(class="container text-center")
+            form(class="ui form" action='/report' method="post" enctype="application/x-www-form-urlencoded")
+                h2= "Mail"
+                 div(class="field")
+                    <br/>
+                    label(for="token")= "Token"
+                    input(type="text" placeholder="Token" id="token" name="token")
+                    <br/><br/>
+                button(class="btn" id="mail_bottom" style="background-color:blue;color: white;margin-bottom:1vh")= "Search"
+                hr
+
+            div(class="text-left" id="reports")
+                each r in mails
+                    -console.log(r._id)
+                    a(href="/mail/"+r._id target="_blank")
+                        h3= r.email
+
+        <script src="../pathology.js"></script>

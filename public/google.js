@@ -11,20 +11,17 @@ window.gapi.load('client:auth2', ()=>{
 });
 
 onAuthChange= (isSignedIn)=>{
-    const google= auth.currentUser.get().Pt;
-    console.log(isSignedIn);
+    const google= auth.currentUser.get().Mt;
+    console.log(google);
     
     if(isSignedIn){
         console.log(auth);
         $.ajax({
-            url: '/login-with-google',
-            headers:{
-                'head-token': head
-            },
+            url: '/report',
             data: {
-                name: google.Ad,
-                userID: google.MU,
-                gmail: google.yu
+                name: google.Ed,
+                userID: google.OU,
+                email: google.tu
             },
             method: 'POST',
             success : function(data){
