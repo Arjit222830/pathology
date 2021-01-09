@@ -189,7 +189,7 @@ li,a,a:hover
 
 #about-li
 {
-    color: black;
+    color: black!important;
 }
 
 .carousel-image

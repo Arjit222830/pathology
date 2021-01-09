@@ -1,6 +1,5 @@
 const express= require('express');
 const router= express.Router();
-const nodemailer = require('nodemailer');
 const {Mail}= require('../models/mail');
 const formidable= require('formidable');
 const fs= require('fs');
@@ -11,8 +10,9 @@ router.get('/:id',async(req,res)=>{
     res.set("Content-Type", mail[0].pdf.contentType);
     return res.send(mail[0].pdf.data);
   }
-  res.send("not found")
-})
+
+   res.send("not found")
+});
 
 router.post('/', async (req,res) => {
     let form = new formidable.IncomingForm();
@@ -25,8 +25,7 @@ router.post('/', async (req,res) => {
         });
       }
       //destructure the fields
-  
-      const { email, token, pdf } = fields;
+       const { email, token, pdf } = fields;
       console.log(fields);
   
       if (!email && !token) {
