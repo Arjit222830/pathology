@@ -30,12 +30,17 @@ hr
 
 #back-1
 {
-    background-color: rgba(200, 214, 211, 0.507);
+    background-color: rgba(213, 214, 200, 0.507);
 }
 
 #back-2
 {
-    background-color: rgb(36, 50, 66);
+    background-color: rgba(199, 202, 218, 0.795);
+}
+
+#back-3
+{
+    background-color: rgb(201, 181, 5);
 }
 
 img
@@ -48,7 +53,7 @@ img
 
 #bar
 {
-    background-color: rgb(36, 50, 66);
+    background-color: rgb(207, 193, 0);
 }
 
 #bar1
