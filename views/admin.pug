@@ -25,6 +25,8 @@
             form(class="ui form" action=link method="post" enctype="multipart/form-data")
                 div(class="field")
                     <br/>
+                    label(for="name")= "Name"
+                    input(type="text" placeholder="name" id="name" name="name" value=name)
                     label(for="email")= "E-Mail"
                     input(type="email" placeholder="email" id="email" name="email" value=email)
                     label(for="token")= "Token"

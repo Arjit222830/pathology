@@ -27,10 +27,10 @@ router.post('/', async (req,res) => {
       });
     }
     //destructure the fields
-      const { email, token} = fields;
+      const { name,email, token} = fields;
     console.log(fields);
 
-    if (!email && !token) {
+    if (!name && !email && !token) {
       return res.status(400).json({
 
         error: "Please include all fields",
@@ -78,9 +78,9 @@ router.post('/update/:id', async (req, res) => {
     }
     //destructure the fields
 
-    const { email, token } = fields;
+    const { name,email, token } = fields;
 
-    if (!email && !token) {
+    if (!name && !email && !token) {
       return res.status(400).json({
         error: "Please include all fields",
       });

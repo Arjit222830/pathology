@@ -43,7 +43,7 @@ app.post('/info',async(req,res)=>{
 app.post('/admin-:id', async(req, res)=> {
     console.log(req.params.id[0]);
     const mail= await Mail.find({_id: req.params.id});
-    res.status(200).render('admin',{flag:2,link:`mail/update/${req.params.id}`,email:mail[0].email,token:mail[0].token});
+    res.status(200).render('admin',{flag:2,link:`mail/update/${req.params.id}`,name:mail[0].name,email:mail[0].email,token:mail[0].token});
 });
 
 app.post('/report', async function (req, res) {
