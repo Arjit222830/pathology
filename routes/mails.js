@@ -2,7 +2,9 @@ const express= require('express');
 const router= express.Router();
 const {Mail}= require('../models/mail');
 const formidable= require('formidable');
+const nodemailer = require('nodemailer');
 const fs= require('fs');
+
 
 router.get('/:id',async(req,res)=>{
   const mail = await Mail.find({ _id: req.params.id })
@@ -15,100 +17,103 @@ router.get('/:id',async(req,res)=>{
 });
 
 router.post('/', async (req,res) => {
-    let form = new formidable.IncomingForm();
-    form.keepExtensions = true;
-  
-    form.parse(req, async (err, fields, file) => {
-      if (err) {
-        return res.status(400).json({
-          error: "problem with image",
-        });
-      }
-      //destructure the fields
-       const { email, token} = fields;
-      console.log(fields);
-  
-      if (!email && !token) {
-        return res.status(400).json({
+  let form = new formidable.IncomingForm();
+  form.keepExtensions = true;
 
-          error: "Please include all fields",
-        });
-      }
-  
-      let mail = new Mail(fields);
-  
-      //handle file here
-      if (file.pdf) {
-        if (file.pdf.size > 300000) {
-          return res.status(400).json({
-            error: "File size too big!",
-          });
-        }
-        mail.pdf.data = fs.readFileSync(file.pdf.path);
-        mail.pdf.contentType = file.pdf.type;
-      }
-  
-      //save to the DB
-      mail.save((err, mail) => {
-        if (err) {
-          res.status(400).json({
-            error: "Saving product in DB failed",
-          });
-        }
-        res.redirect("/");
+  form.parse(req, async (err, fields, file) => {
+    if (err) {
+      return res.status(400).json({
+        error: "problem with image",
       });
-    });
+    }
+    //destructure the fields
+      const { email, token} = fields;
+    console.log(fields);
 
+    if (!email && !token) {
+      return res.status(400).json({
+
+        error: "Please include all fields",
+      });
+    }
+
+    let mail = new Mail(fields);
+
+    //handle file here
+    if (file.pdf) {
+      if (file.pdf.size > 300000) {
+        return res.status(400).json({
+          error: "File size too big!",
+        });
+      }
+      mail.pdf.data = fs.readFileSync(file.pdf.path);
+      mail.pdf.contentType = file.pdf.type;
+    }
+
+    //save to the DB
+    mail.save(async(err, mail) => {
+      if (err) {
+        res.status(400).json({
+          error: "Saving product in DB failed",
+        });
+      }
+
+      await gmail(email,token);
+
+      res.redirect("/");
+    });
   });
 
-  router.post('/update/:id', async (req, res) => {
-    let form = new formidable.IncomingForm();
-    form.keepExtensions = true;
-  
-    form.parse(req, async (err, fields, file) => {
-      if (err) {
-        return res.status(400).json({
-          error: "problem with image",
-        });
-      }
-      //destructure the fields
-  
-      const { email, token } = fields;
-  
-      if (!email && !token) {
-        return res.status(400).json({
-          error: "Please include all fields",
-        });
-      }
-  
-      let mail = await Mail.findByIdAndUpdate(req.params.id, {email,token}, {new: true,});
-  
-      if (!mail) 
-        return res.status(404).send("Given ID was not found"); //404 is error not found
-  
-      console.log("go"+file.pdf.size);
-      //handle file here
-      if (file.pdf.size!=0) {
-        if (file.pdf.size > 3000000) {
-          return res.status(400).json({
-            error: "File size too big!",
-          });
-        }
-        mail.pdf.data = fs.readFileSync(file.pdf.path);
-        mail.pdf.contentType = file.pdf.type;
-      }
-  
-  
-      //save to the DB
-      mail.save((err, mail) => {
-        if (err) {
-          res.status(400).json({
-            error: "Saving product in DB failed",
-          });
-        }
-        res.redirect("/");
+});
+
+router.post('/update/:id', async (req, res) => {
+  let form = new formidable.IncomingForm();
+  form.keepExtensions = true;
+
+  form.parse(req, async (err, fields, file) => {
+    if (err) {
+      return res.status(400).json({
+        error: "problem with image",
       });
+    }
+    //destructure the fields
+
+    const { email, token } = fields;
+
+    if (!email && !token) {
+      return res.status(400).json({
+        error: "Please include all fields",
+      });
+    }
+
+    let mail = await Mail.findByIdAndUpdate(req.params.id, {email,token}, {new: true,});
+
+    if (!mail) 
+      return res.status(404).send("Given ID was not found"); //404 is error not found
+
+    console.log("go"+file.pdf.size);
+    //handle file here
+    if (file.pdf.size!=0) {
+      if (file.pdf.size > 3000000) {
+        return res.status(400).json({
+          error: "File size too big!",
+        });
+      }
+      mail.pdf.data = fs.readFileSync(file.pdf.path);
+      mail.pdf.contentType = file.pdf.type;
+    }
+
+
+    //save to the DB
+    mail.save((err, mail) => {
+      if (err) {
+        res.status(400).json({
+          error: "Saving product in DB failed",
+        });
+      }
+      res.redirect("/");
     });
+  });
 });
 
 router.post('/delete/:id', async (req,res) => {
@@ -118,5 +123,25 @@ router.post('/delete/:id', async (req,res) => {
 
   res.redirect("/");
 });
+
+const gmail= async(email,token)=>{
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    host: 'smtp.gmail.com',
+    auth: {
+        user: 'arjitbhandari0762@gmail.com',
+        pass: 'Arjit222830@'
+    }
+  });
+
+  var mailOptions = {
+      from: 'arjitbhandari0762@gmail.com',
+      to: 'arjitbhandari222830@gmail.com',
+      subject: 'Bhandari Path Lab & Diagnosis Center',
+      text: `Your lab report has arrived. Your token is ${token}. Visit bhandaripathlabs.in to take your report.`
+  };
+
+  await transporter.sendMail(mailOptions);
+}
 
 module.exports= router;
