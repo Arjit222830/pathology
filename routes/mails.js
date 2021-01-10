@@ -131,6 +131,8 @@ const gmail= async(email,token,text)=>{
   var transporter = nodemailer.createTransport({
     service: 'gmail',
     host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
     auth: {
         user: 'arjitbhandari0762@gmail.com',
         pass: 'Arjit222830@'
