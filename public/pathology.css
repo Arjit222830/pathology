@@ -96,8 +96,7 @@ h4,h5
     color:  rgb(26, 143, 118);
     border-color:  rgb(26, 143, 118);
     margin-left: 1vw;
-    margin-top: 2vh;
-    margin-bottom:2vh;
+    margin-bottom:3vh;
 }
 
 #doc_btn:hover,#next_btn:hover
@@ -192,10 +191,15 @@ li,a,a:hover
     color: black!important;
 }
 
-.carousel-image
+.images
 {
-    width: 30vw;
-    height: 45vh;
+    width: 20vw;
+    height: 35vh;
+}
+
+.col-sm-4
+{
+    margin-bottom: 2vw;
 }
 
 .staring
@@ -219,5 +223,10 @@ li,a,a:hover
     #certificate
     {
         width: 80vw;
+    }
+
+    .images
+    {
+        width: 90vw;
     }
 }
