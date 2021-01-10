@@ -27,34 +27,6 @@ require('./prod.js')(app);
 
 app.set("view engine", "pug");
 
-app.get('/', async function (req, res) {
-    res.status(200).render('index');
-});
-
-app.get('/staff', async function (req, res) {
-    res.status(200).render('staff');
-});
-
-app.get('/about', async function (req, res) {
-    res.status(200).render('about');
-});
-
-app.get('/location', async function (req, res) {
-    res.status(200).render('location');
-});
-
-app.get('/admin', async function (req, res) {
-    res.status(200).render('admin',{flag:0,link:'/mail'});
-});
-
-app.get('/info',async(req,res)=>{
-    res.status(200).redirect('/admin');
-});
-
-app.get('/admin-:id', (req, res)=> {
-    res.status(200).redirect('/admin');
-});
-
 app.post('/admin', async function (req, res) {
     var flag=0;
     if(config.get('security')==req.body.security)
@@ -66,10 +38,6 @@ app.post('/admin', async function (req, res) {
 app.post('/info',async(req,res)=>{
     const mails = await Mail.find()
     res.status(200).render("reports",{mails});
-});
-
-app.get('/report', async function (req, res) {
-    res.status(200).render('customer',{mails:[]});
 });
 
 app.post('/admin-:id', async(req, res)=> {
