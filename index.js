@@ -42,16 +42,33 @@ app.get('/location', async function (req, res) {
 });
 
 app.get('/admin', async function (req, res) {
-    res.status(200).render('admin');
+    res.status(200).render('admin',{flag:0,link:'/mail'});
+});
+
+app.post('/admin', async function (req, res) {
+    var flag=0;
+    if(config.get('security')==req.body.security)
+        flag=1;
+
+    res.status(200).render('admin',{flag:flag,link:'/mail'});
+});
+
+app.post('/info',async(req,res)=>{
+    const mails = await Mail.find()
+    res.status(200).render("reports",{mails});
 });
 
 app.get('/report', async function (req, res) {
-
     res.status(200).render('customer',{mails:[]});
 });
 
+app.post('/admin-:id', async(req, res)=> {
+    console.log(req.params.id[0]);
+    const mail= await Mail.find({_id: req.params.id});
+    res.status(200).render('admin',{flag:2,link:`mail/update/${req.params.id}`,email:mail[0].email,token:mail[0].token});
+});
+
 app.post('/report', async function (req, res) {
-    
     const mails= await Mail.find({token: req.body.token});
     console.log("hel="+mails);
     res.status(200).render('customer',{mails:mails});

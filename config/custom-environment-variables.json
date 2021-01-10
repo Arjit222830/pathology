@@ -1,3 +1,4 @@
 {
-    "db":"pathology_db"
+    "db":"pathology_db",
+    "security": "Key"
 }

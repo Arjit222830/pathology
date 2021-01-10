@@ -7,19 +7,40 @@
             include top.pug
 
             div(class="container"  style="padding-bottom:30vh" )
-                form(class="ui form" action='/mail' method="post" enctype="multipart/form-data")
-                    div(class="text-center")
-                        h2= "Admin Page"
-                    div(class="field")
-                        <br/>
-                        label(for="email")= "E-Mail"
-                        input(type="email" placeholder="email" id="email" name="email")
-                        label(for="token")= "Token"
-                        input(type="text" placeholder="Token" id="token" name="token")
-                        <br/><br/>
-                        input(type="file" id="pdf" name="pdf" multiple="multiple")
-                    button(class="btn" id="mail_bottom" style="background-color:blue;color: white;margin-bottom:1vh")= "Send Mail"
-                    hr
+                div(class="text-center")
+                    h2= "Admin Page"
+                -if(flag==0)
+                    -Security()
+                -else
+                    -Admin()
+                    
 
         <script src="../pathology.js"></script>
         include footer.pug
+
+        -function Admin()
+            div(class="text-right")
+                form(action="/info" method="post" enctype="multipart/form-data")
+                    button(class="btn" type="submit" style="background-color:red; color: white;margin-bottom:1vh")= "Show List"
+                form(class="ui form" action=link method="post" enctype="multipart/form-data")
+                    div(class="field")
+                        <br/>
+                        label(for="email")= "E-Mail"
+                        input(type="email" placeholder="email" id="email" name="email" value=email)
+                        label(for="token")= "Token"
+                        input(type="text" placeholder="Token" id="token" name="token" value=token)
+                        <br/><br/>
+                        input(type="file" id="pdf" name="pdf" multiple="multiple")
+                    button(class="btn" id="mail_bottom" style="background-color:blue;color: white;margin-bottom:1vh")= "Save"
+                    hr
+
+        -function Security()
+            form(class="ui form" action='/admin' method="post" enctype="application/www-x-form-urlencoded")
+                div(class="field")
+                    <br/>
+                    label(for="security")= "Security Key"
+                    input(type="text" placeholder="security" id="security" name="security")
+                button(class="btn" id="mail_bottom" style="background-color:blue;color: white;margin-bottom:1vh")= "Verify"
+                hr
+
+        

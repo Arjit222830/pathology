@@ -1,3 +1,4 @@
 {
-    "db": "mongodb://localhost/pathology"
+    "db": "mongodb://localhost/pathology",
+    "security": "Arjit222830@"
 }
