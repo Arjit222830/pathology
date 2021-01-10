@@ -30,7 +30,7 @@ router.get('/admin-:id', (req, res)=> {
 });
 
 router.get('/report', async function (req, res) {
-    res.status(200).render('customer',{mails:[]});
+    res.status(200).render('customer',{mails:[],flag:1});
 });
 
 module.exports= router;

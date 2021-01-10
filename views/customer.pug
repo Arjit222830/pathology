@@ -9,6 +9,8 @@
                     h2= "Mail"
                     div(class="field")
                         <br/>
+                        label(for="email")= "Email"
+                        input(type="email" placeholder="Email" id="email" name="email")
                         label(for="token")= "Token"
                         input(type="text" placeholder="Token" id="token" name="token")
                         <br/><br/>
@@ -16,10 +18,13 @@
                     hr
 
                 div(class="text-left" style="padding-bottom:30vh")
-                    each r in mails
-                        -console.log(r._id)
-                        a(href="/mail/"+r._id target="_blank")
-                            h3= r.name
+                    -if(mails.length==0 && flag==0)
+                        h4(style="color:red")= "Email or Token Doesn't match"
+                    -else
+                        each r in mails
+                            -console.log(r._id)
+                            a(href="/mail/"+r._id target="_blank")
+                                h3= r.name
 
         <script src="../pathology.js"></script>
         include footer.pug

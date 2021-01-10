@@ -47,9 +47,8 @@ app.post('/admin-:id', async(req, res)=> {
 });
 
 app.post('/report', async function (req, res) {
-    const mails= await Mail.find({token: req.body.token});
-    console.log("hel="+mails);
-    res.status(200).render('customer',{mails:mails});
+    const mails= await Mail.find({email:req.body.email,token: req.body.token});
+    res.status(200).render('customer',{mails:mails,flag:0});
 });
 
 const port = process.env.PORT || 3000;
