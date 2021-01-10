@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const config = require('config');
 const google_login = require('./routes/google_login');
 const mail = require('./routes/mails');
+const gets= require('./routes/get-request');
 const {Mail}= require('./models/mail');
 
 mongoose.connect(config.get('db'), { useNewUrlParser: true, useUnifiedTopology: true })
@@ -18,6 +19,7 @@ app.use(express.json());
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use('/', gets);
 app.use('/login-with-google', google_login);
 app.use('/mail', mail);
 
@@ -43,6 +45,14 @@ app.get('/location', async function (req, res) {
 
 app.get('/admin', async function (req, res) {
     res.status(200).render('admin',{flag:0,link:'/mail'});
+});
+
+app.get('/info',async(req,res)=>{
+    res.status(200).redirect('/admin');
+});
+
+app.get('/admin-:id', (req, res)=> {
+    res.status(200).redirect('/admin');
 });
 
 app.post('/admin', async function (req, res) {
