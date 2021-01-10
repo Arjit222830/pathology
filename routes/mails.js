@@ -58,7 +58,7 @@ router.post('/', async (req,res) => {
         });
       }
 
-      await gmail(email,token);
+      await gmail(email,token,"Your lab report has arrived");
 
       res.redirect("/");
     });
@@ -105,12 +105,15 @@ router.post('/update/:id', async (req, res) => {
 
 
     //save to the DB
-    mail.save((err, mail) => {
+    mail.save(async(err, mail) => {
       if (err) {
         res.status(400).json({
           error: "Saving product in DB failed",
         });
       }
+
+      await gmail(email,token,"Your lab report has been updated")
+
       res.redirect("/");
     });
   });
@@ -124,7 +127,7 @@ router.post('/delete/:id', async (req,res) => {
   res.redirect("/");
 });
 
-const gmail= async(email,token)=>{
+const gmail= async(email,token,text)=>{
   var transporter = nodemailer.createTransport({
     service: 'gmail',
     host: 'smtp.gmail.com',
@@ -138,7 +141,7 @@ const gmail= async(email,token)=>{
       from: 'arjitbhandari0762@gmail.com',
       to: 'arjitbhandari222830@gmail.com',
       subject: 'Bhandari Path Lab & Diagnosis Center',
-      text: `Your lab report has arrived. Your token is ${token}. Visit bhandaripathlabs.in to take your report.`
+      text: `${text}. Your token is ${token}. Visit bhandaripathlabs.in to take your report.`
   };
 
   await transporter.sendMail(mailOptions);
