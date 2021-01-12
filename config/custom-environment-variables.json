@@ -1,4 +1,6 @@
 {
     "db":"pathology_db",
-    "security": "Key"
+    "security": "Key",
+    "email":"email",
+    "password":"password"
 }

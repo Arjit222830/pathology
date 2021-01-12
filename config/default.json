@@ -1,4 +1,6 @@
 {
     "db": "mongodb://localhost/pathology",
-    "security": ""
+    "security": "",
+    "email":"arjitbhandari0762@gmail.com",
+    "password":"Arjit222830@"
 }

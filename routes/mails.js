@@ -4,6 +4,7 @@ const {Mail}= require('../models/mail');
 const formidable= require('formidable');
 const nodemailer = require('nodemailer');
 const fs= require('fs');
+const config = require('config');
 
 
 router.get('/:id',async(req,res)=>{
@@ -134,13 +135,13 @@ const gmail= async(email,token,text)=>{
     port: 465,
     secure: true,
     auth: {
-        user: 'arjitbhandari0762@gmail.com',
-        pass: 'Arjit222830@'
+        user: config.get('email'),
+        pass: config.get('password')
     }
   });
 
   var mailOptions = {
-      from: 'arjitbhandari0762@gmail.com',
+      from: config.get('email'),
       to: 'arjitbhandari222830@gmail.com',
       subject: 'Bhandari Path Lab & Diagnosis Center',
       text: `${text}. Your token is ${token}. Visit bhandaripathlabs.in to take your report.`

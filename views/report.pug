@@ -1,0 +1,14 @@
+<html>
+    include header.pug
+    
+    <body>
+
+        -if(flag==1)
+            include admin.pug
+        -else
+            each r in mails
+               -console.log(r._id)
+                a(href="/mail/"+r._id)
+                    h3= r.email
+
+        <script src="../pathology.js"></script>

@@ -37,7 +37,7 @@ app.post('/admin', async function (req, res) {
 
 app.post('/info',async(req,res)=>{
     const mails = await Mail.find()
-    res.status(200).render("reports",{mails});
+    res.status(200).render("info",{mails});
 });
 
 app.post('/admin-:id', async(req, res)=> {
