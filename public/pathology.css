@@ -156,7 +156,7 @@ z
 #map
 {
     padding-top: 5vh;
-    width: 80vw;
+    width: 95vw;
     height: 80vh;
     padding-bottom: 5vh;
 }
@@ -207,9 +207,15 @@ li,a,a:hover
     color: rgb(255, 238, 0)
 }
 
+#family
+{
+    width: 30vw;
+    height: 30vh;
+}
+
 
 @media(max-width:550px){
-    #plant,#doctors
+    #plant,#family
     {
         width:300px;
     }

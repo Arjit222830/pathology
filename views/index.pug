@@ -6,69 +6,54 @@
         <div class="container-fluid" id="index">
             include top.pug
 
-            <div class="container white-background text-center">
-                <div class="row text-center">
-                    <div style="margin-top:5vh" class="col-sm-6 text-cenetr">
-                        <h4>Welcome To Bhandari Path Labs & Diagonstic Centre</h4><br/>
-                        <p>Bhandari Path Labs & Diagnostic center is an well-equipped fully computerised diagnostic center of Uttarkashi that deals with all type of pathology tests, digital X-Rays, OPG, ECG, dispensary and a unit of Dental Care.</p><br/>
-                        a(href="/about")
-                            <button id="doc_btn" class="btn btn-primary shadow-none">About Us</button><br/>
-                    </div>
-                    <div class="col-sm-6">
-                        <lottie-player id="plant" src="https://assets4.lottiefiles.com/temp/lf20_mUSEmR.json"  background="transparent"  speed="0.5"  loop autoplay ></lottie-player>
-                    </div>
-                </div> 
-            </div>
-
-            <br/><hr/><br/><br/>
-            <div class="container">
-                <div class=" row">
-                    -for(var x=0;x<6;x++)
-                        <div class="col-4 col-md-2 png-pad text-center">
-                            <img class="rounded-circle" src="lab1.jpg"/>
+            <div class="white-background" style="margin-top:0">
+                <div class="container text-center">
+                    <div class="row text-center">
+                        <div style="margin-top:5vh" class="col-sm-6 text-cenetr">
+                            <strong>
+                                <h3>Welcome To Bhandari Path Labs & Diagonstic Centre</h3>
+                            </strong>
+                            <br/>
+                            <p>Bhandari Path Labs & Diagnostic center is an well-equipped fully computerised diagnostic center of Uttarkashi that deals with all type of pathology tests, digital X-Rays, OPG, ECG, dispensary and a unit of Dental Care.</p><br/>
+                            a(href="/about")
+                                <button id="doc_btn" class="btn btn-primary shadow-none">About Us</button><br/>
                         </div>
+                        <div class="col-sm-6">
+                            <lottie-player id="plant" src="https://assets4.lottiefiles.com/temp/lf20_mUSEmR.json"  background="transparent"  speed="0.5"  loop autoplay ></lottie-player>
+                        </div>
+                    </div> 
                 </div>
             </div>
 
             <br/><br/><hr/>
 
-            <div id="back-1">
-                <div class="container ">
-                    <div class="container  row text-center">
-                        <div class="col-sm-6">
-                            <br/>
-                            <lottie-player id="doctors" src="https://assets2.lottiefiles.com/packages/lf20_wdXBRc.json"  background="transparent"  speed="0.5"  loop autoplay ></lottie-player>
+            <div class="container">
+                <div class=" row">
+                    -for(var x=0;x<6;x++)
+                        <div class="col-4 col-md-2 png-pad text-center" style="margin-bottom:2vh">
+                            img(class="rounded-circle" src=`images/circle${x+1}.jpg`)
                         </div>
-                        <div class="col-sm-6 text-left">
-                            <br/>
-                            <h4>Welcome To Bhandari Pathology</h4>
-                            <h4>We believe in Care</h4><br/>
-                            <p>Registration for the teams willing to participate in Quiz has started, Team leaders are kindly requested to fill the registration form by 29th January 2020. Form filled after 29th January will not be considered.</p><br/>
-                        </div>
-                    </div>
-                </div>  
+                </div>
             </div>
 
             <hr/>
 
-            <div>
-                <div class="container white-background text-center">
-                    <br/>
-                    <h4 class="dark">Why we</h4>
-                    <div class="container row text-center">
-                        <div class="col-sm-6" style="margin-bottom:10vh!important">
-                            <br/>
-                            <img src="/i4.jpg" id="certificate" alt="Card image cap">
-                        </div>
-                        <div class="col-sm-6" style="margin-top:3vh">
-                            <br/>
-                            include carousel.pug
-                        </div>
+            <div class="container white-background text-center">
+                <br/>
+                <h4 class="dark">Why we</h4>
+                <div class="container row text-center">
+                    <div class="col-sm-6" style="margin-bottom:10vh!important">
+                        <br/>
+                        <img src="/i4.jpg" id="certificate" alt="Card image cap">
                     </div>
-                </div>  
-            </div>
+                    <div class="col-sm-6" style="margin-top:3vh">
+                        <br/>
+                        include carousel.pug
+                    </div>
+                </div>
+            </div>  
                 
-            <div class="container text-center">
+            <div class="text-center">
                 <br><br>
                 <h3>Location</h3>
                 <iframe id="map" src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d13718.434872663838!2d78.4433071153442!3d30.729398610397812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e6!4m3!3m2!1d30.732737099999998!2d78.4356253!4m5!1s0x3908edde9c5440bb%3A0x91b1827d0b38c013!2sBhandari%20path%20labs%2C%20behind%20k.k%20medical%20store%2C%20bhairav%20chowk%2C%20Uttarkashi%2C%20Uttarakhand%20249193!3m2!1d30.729435499999997!2d78.4432642!5e0!3m2!1sen!2sin!4v1593625993981!5m2!1sen!2sin" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe> 

@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+const cookieParser= require('cookie-parser');
 const config = require('config');
 const google_login = require('./routes/google_login');
 const mail = require('./routes/mails');
@@ -19,6 +20,7 @@ app.use(express.json());
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 app.use('/', gets);
 app.use('/login-with-google', google_login);
 app.use('/mail', mail);

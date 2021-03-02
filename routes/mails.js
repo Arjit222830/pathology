@@ -6,7 +6,6 @@ const nodemailer = require('nodemailer');
 const fs= require('fs');
 const config = require('config');
 
-
 router.get('/:id',async(req,res)=>{
   const mail = await Mail.find({ _id: req.params.id })
   if (mail[0].pdf.data) {
@@ -129,6 +128,7 @@ router.post('/delete/:id', async (req,res) => {
 });
 
 const gmail= async(email,token,text)=>{
+  console.log("hello="+email);
   var transporter = nodemailer.createTransport({
     service: 'gmail',
     host: 'smtp.gmail.com',
@@ -142,7 +142,7 @@ const gmail= async(email,token,text)=>{
 
   var mailOptions = {
       from: config.get('email'),
-      to: 'arjitbhandari222830@gmail.com',
+      to: email,
       subject: 'Bhandari Path Lab & Diagnosis Center',
       text: `${text}. Your token is ${token}. Visit bhandaripathlabs.in to take your report.`
   };
