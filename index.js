@@ -4,6 +4,8 @@ const app = express();
 const bodyParser = require("body-parser");
 const cookieParser= require('cookie-parser');
 const config = require('config');
+const helmet = require('helmet');
+const compression= require('compression');
 const google_login = require('./routes/google_login');
 const mail = require('./routes/mails');
 const gets= require('./routes/get-request');
@@ -21,11 +23,11 @@ app.use(express.json());
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(helmet());
+app.use(compression());
 app.use('/', gets);
 app.use('/login-with-google', google_login);
 app.use('/mail', mail);
-
-require('./prod.js')(app);
 
 app.set("view engine", "pug");
 
